@@ -1,16 +1,8 @@
 # encoding: utf-8
-"""
-@author:  sherlock
-@contact: sherlockliao01@gmail.com
-"""
-
-import logging
-import math
-import os
-import sys
-from typing import Iterable
+import os, sys
 
 import torch
+from tqdm import tqdm 
 
 @torch.no_grad()
 def evaluate(model, data_loader, metrics, device, writer):
@@ -23,7 +15,7 @@ def evaluate(model, data_loader, metrics, device, writer):
         eval_metrics[k] = v.to(device)
         result_metrics[k] = list()
 
-    for idx, (inputs, targets) in enumerate(data_loader):
+    for idx, (inputs, targets) in enumerate(tqdm(data_loader)):
         inputs, targets = inputs.to(device), targets.to(device)
         outputs = model(inputs)
         iou_value = eval_metrics["iou"](outputs, targets.type(torch.int32))

@@ -5,6 +5,7 @@ __pycache__
 .idea
 .pypirc
 dist
+*.out
 torchlib.egg-info
 MNIST/*
 

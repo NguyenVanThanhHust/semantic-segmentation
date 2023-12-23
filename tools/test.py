@@ -75,7 +75,7 @@ def main():
 
     writer = SummaryWriter(output_dir)
     result = evaluate(model, test_loader, metrics, device, writer)
-    for k, v in result:
+    for k, v in result.items():
         print(k, v)
         
 if __name__ == '__main__':

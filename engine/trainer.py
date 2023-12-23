@@ -5,14 +5,12 @@
 """
 
 import logging
-import math
 import os
 from os.path import join
 import sys
 from typing import Iterable
 
 import torch
-
 
 def train_one_epoch(model: torch.nn.Module, criterion,
                     data_loader: Iterable, optimizer: torch.optim.Optimizer,
